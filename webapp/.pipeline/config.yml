@@ -1,0 +1,37 @@
+---
+general:
+  buildTool: "mta"
+service:
+  buildToolVersion: "MBTJ17N18"
+  stages:
+    Acceptance:
+      cfCredentialsId: "cf-deploy"
+stages:
+  Build:
+    mavenExecuteStaticCodeChecks: false
+    npmExecuteLint: false
+  Additional Unit Tests:
+    npmExecuteScripts: false
+  Malware Scan:
+    malwareExecuteScan: false
+  Acceptance:
+    npmExecuteEndToEndTests: false
+    cfApiEndpoint: "https://api.cf.us10-001.hana.ondemand.com"
+    cfOrg: "31555456trial"
+    cfSpace: "dev"
+    deployType: "standard"
+    cloudFoundryDeploy: true
+  Compliance:
+    sonarExecuteScan: false
+  Release:
+    tmsExport: false
+    tmsUpload: true
+    cloudFoundryDeploy: false
+steps:
+  artifactPrepareVersion:
+    versioningType: "cloud_noTag"
+  cloudFoundryDeploy:
+    mtaDeployParameters: "-f --version-rule ALL"
+  tmsUpload:
+    nodeName: "dev"
+    credentialsId: "tms"
