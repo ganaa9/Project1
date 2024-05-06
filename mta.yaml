@@ -44,10 +44,10 @@ modules:
     build-result: resources
     requires:
     - artifacts:
-      - project1.zip
-      name: project1
+      - project.zip
+      name: project
       target-path: resources/
-- name: project1
+- name: project
   type: html5
   path: .
   build-parameters:
