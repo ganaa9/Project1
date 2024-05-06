@@ -26,7 +26,7 @@ stages:
   Release:
     tmsExport: false
     tmsUpload: true
-    cloudFoundryDeploy: false
+    cloudFoundryDeploy: true
 steps:
   artifactPrepareVersion:
     versioningType: "cloud_noTag"
