@@ -12,4 +12,22 @@ sap.ui.define([
 
             }
         });
+
+       
+        
     });
+    sap.ui.define([
+        "sap/ui/core/mvc/Controller",
+        "sap/m/MessageToast"
+    ], function(Controller, MessageToast) {
+        "use strict";
+    
+        return Controller.extend("sap.ui.webc.main.sample.ListBasic.C", {
+            handleItemClick: function(event) {
+                var selectedItem = event.getParameter("listItem");
+                var selectedText = selectedItem.getText();
+                MessageToast.show("Selected item: " + selectedText);
+            }
+        });
+    });
+    
